@@ -5,10 +5,18 @@ import android.os.*;
 import android.widget.*;
 import android.view.*;
 import java.io.*; // File IO from java
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
+    
+    // creating array list
+    ArrayList<String> deffList = new ArrayList<String>();
+    ArrayList<String> termList = new ArrayList<String>();
 
     // Creating Buttons
 
@@ -79,15 +87,42 @@ public class MainActivity extends AppCompatActivity {
 
             System.out.println("File in RAW is open");
 
-            while((str = br.readLine()) != null){
+
+
+            while((str = br.readLine()) != null ){
                 // reading one row at a time into string delimieter
                 // Use parse here and split instead of sout
                 // put into deffList and tList,and then hash
-                System.out.println(str);
+                //System.out.println(str);
 
-                System.out.println("File in RAW is Closed");
+                // Splitting the String
+
+                    String[] separated = str.split("\\$\\$"); // will contain d1
+                    String first = separated[0];
+                    //System.out.println(first);
+
+                    String second = separated[1]; // will contain t1
+                    //System.out.println(second);
+
+                    // adding Tokens to Array Lists
+                    deffList.add(first);
+                    termList.add(second);
             }
-            is.close();
+
+            is.close(); // closing stream
+            br.close(); // closing buffer
+            System.out.println("File in RAW is Closed");
+
+
+
+            // adding ArrayLists to hashmap
+            Map<String,String> map = new HashMap<String,String>();// create map
+            for(int i = 0; i< deffList.size(); i++){
+                String deff = deffList.get(i); // storing deff
+                String term = termList.get(i); // storing term
+                map.put(deff,term); // populating map
+            }
+
         }catch (IOException e){
             // catch specificly first
             e.printStackTrace();
