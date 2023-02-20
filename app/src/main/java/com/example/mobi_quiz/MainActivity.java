@@ -1,6 +1,8 @@
 package com.example.mobi_quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.*;
 import android.widget.*;
 import android.view.*;
@@ -15,8 +17,10 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity {
     
     // creating array list
-    ArrayList<String> deffList = new ArrayList<String>();
-    ArrayList<String> termList = new ArrayList<String>();
+    ArrayList<String> deffList, termList = new ArrayList<String>();
+    //ArrayList<String> termList = new ArrayList<String>();
+
+    Map<String,String> map = new HashMap<String,String>();// create map
 
     // Creating Buttons
 
@@ -46,6 +50,17 @@ public class MainActivity extends AppCompatActivity {
                         btnClicked = true;
                         // fileIo Method here
                         readQuizFile1();
+
+                        // intent here
+                        Intent i = new Intent(MainActivity.this, Activity2.class);
+                        i.putStringArrayListExtra("deffList",deffList); // adding deff list to intent
+                        i.putStringArrayListExtra("termsList",termList); // adding terms list intnet
+                       // i.putExtra("hashMap",map);
+                        //i.putStringArrayListExtra()
+
+
+                        startActivity(i);
+
                     }
                     break;
                 default:
@@ -116,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             // adding ArrayLists to hashmap
-            Map<String,String> map = new HashMap<String,String>();// create map
+
             for(int i = 0; i< deffList.size(); i++){
                 String deff = deffList.get(i); // storing deff
                 String term = termList.get(i); // storing term
