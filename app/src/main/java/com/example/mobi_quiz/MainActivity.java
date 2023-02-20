@@ -54,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
                         // intent here
                         Intent i = new Intent(MainActivity.this, Activity2.class);
                         i.putStringArrayListExtra("deffList",deffList); // adding deff list to intent
-                        i.putStringArrayListExtra("termsList",termList); // adding terms list intnet
-                       // i.putExtra("hashMap",map);
-                        //i.putStringArrayListExtra()
+                        i.putStringArrayListExtra("termsList",termList); // adding terms list to intnet
+
+                       i.putExtra("hashMap",map.toString());
+
 
 
                         startActivity(i);

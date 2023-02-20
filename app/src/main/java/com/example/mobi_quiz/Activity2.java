@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Activity2 extends AppCompatActivity {
 
@@ -20,9 +22,16 @@ TextView quizQuestion;
     setContentView(R.layout.activity_2);
     quizQuestion = findViewById(R.id.currentQuestion);
 
-    ArrayList<String> deffList = getIntent().getStringArrayListExtra("deffList");
-    ArrayList<String> termList = getIntent().getStringArrayListExtra("termsList");
+    Intent i = getIntent();
+
+    ArrayList<String> deffList = i.getStringArrayListExtra("deffList");
+    ArrayList<String> termList = i.getStringArrayListExtra("termsList");
     quizQuestion.setText(deffList.get(1));
+Bundle data = i.getExtras();
+    Map<String,String> map = new HashMap<String,String>();
+    map = data.getParcelable("hashMap"); // trying to pass hashmap to intent
+
+
 }
 }
 
