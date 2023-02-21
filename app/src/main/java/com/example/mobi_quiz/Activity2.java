@@ -46,11 +46,9 @@ public class Activity2 extends AppCompatActivity {
             map.put(deffList.get(i),termList.get(i)); // populating map
         }
 
-      //  for(int i = 0; i < deffList.size(); i++){
+
             String currentQ = deffList.get(questionIndex);
             quizQuestion.setText(currentQ);
-
-       // }
 
     }
 

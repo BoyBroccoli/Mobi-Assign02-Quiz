@@ -21,8 +21,8 @@
 
             <TextView
                 android:id="@+id/currentQTxtView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_column="0"
                 android:layout_span="1"
                 android:layout_weight="3"
@@ -40,8 +40,8 @@
 
             <Button
                 android:id="@+id/btnCorrectTerm"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_column="0"
                 android:layout_span="0"
                 android:layout_weight="0"
@@ -49,8 +49,8 @@
 
             <Button
                 android:id="@+id/btnWrongTerm2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btnWrongTerm2" />
 
         </TableRow>
@@ -61,8 +61,8 @@
 
             <Button
                 android:id="@+id/btnWrongTerm1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="@string/btnWrongTerm1" />
 
             <Button
@@ -74,11 +74,11 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnNext"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/btnNext" />
         </TableRow>
