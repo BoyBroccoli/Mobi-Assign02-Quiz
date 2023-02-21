@@ -1,20 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".Activity2">
 
-    <TextView
-        android:id="@+id/currentQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingVertical="45dp"
-        android:paddingLeft="45dp"
-        android:paddingRight="45dp"
-        android:paddingBottom="45dp"
-        android:text="@string/qQuesTxtView"
-        android:textAlignment="center"
-        android:textSize="35sp"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="217dp" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAD8D8"
+        android:shrinkColumns="1,2,3"
+        android:stretchColumns="1,2,3"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/currentQTxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_span="1"
+                android:layout_weight="3"
+                android:paddingVertical="85dp"
+                android:paddingBottom="85dp"
+                android:text="@string/currentQTxtView"
+                android:textAlignment="center"
+                android:textSize="45sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnCorrectTerm"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_span="0"
+                android:layout_weight="0"
+                android:text="@string/btnCorrectTerm" />
+
+            <Button
+                android:id="@+id/btnWrongTerm2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnWrongTerm2" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnWrongTerm1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnWrongTerm1" />
+
+            <Button
+                android:id="@+id/btnWrongTerm3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnWrongTerm3" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnNext" />
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,12 +15,12 @@ import java.util.StringTokenizer;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
-    
-    // creating array list
-    ArrayList<String> deffList, termList = new ArrayList<String>();
-    //ArrayList<String> termList = new ArrayList<String>();
 
-    Map<String,String> map = new HashMap<String,String>();// create map
+    // creating array list
+    ArrayList<String> deffList = new ArrayList<String>();
+    ArrayList<String> termList = new ArrayList<String>();
+
+    // Map<String,String> map = new HashMap<String,String>();// create map
 
     // Creating Buttons
 
@@ -53,12 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
                         // intent here
                         Intent i = new Intent(MainActivity.this, Activity2.class);
-                        i.putStringArrayListExtra("deffList",deffList); // adding deff list to intent
-                        i.putStringArrayListExtra("termsList",termList); // adding terms list to intnet
-
-                       i.putExtra("hashMap",map.toString());
-
-
+                        startIntentArrayProcess(i);
 
                         startActivity(i);
 
@@ -71,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
         } // end on click
     }; // end listener
+
+    public void startIntentArrayProcess(Intent i){
+        // intent here
+
+        i.putStringArrayListExtra("deffList",deffList); // adding deff list to intent
+        i.putStringArrayListExtra("termsList",termList); // adding terms list to intnet
+
+    }
 
     public void setUpAndLinkBtns(){
 
@@ -131,13 +134,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            // adding ArrayLists to hashmap
 
-            for(int i = 0; i< deffList.size(); i++){
-                String deff = deffList.get(i); // storing deff
-                String term = termList.get(i); // storing term
-                map.put(deff,term); // populating map
-            }
 
         }catch (IOException e){
             // catch specificly first
