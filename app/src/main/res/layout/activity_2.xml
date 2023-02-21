@@ -10,7 +10,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FAD8D8"
+        android:background="#BC81E4C8"
         android:shrinkColumns="1,2,3"
         android:stretchColumns="1,2,3"
         app:layout_constraintStart_toStartOf="parent">
@@ -26,8 +26,8 @@
                 android:layout_column="0"
                 android:layout_span="1"
                 android:layout_weight="3"
-                android:paddingVertical="85dp"
-                android:paddingBottom="85dp"
+                android:paddingVertical="100dp"
+                android:paddingBottom="100dp"
                 android:text="@string/currentQTxtView"
                 android:textAlignment="center"
                 android:textSize="45sp" />
@@ -42,16 +42,11 @@
                 android:id="@+id/btnCorrectTerm"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_column="0"
-                android:layout_span="0"
-                android:layout_weight="0"
-                android:text="@string/btnCorrectTerm" />
-
-            <Button
-                android:id="@+id/btnWrongTerm2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/btnWrongTerm2" />
+                android:layout_weight="1"
+                android:backgroundTint="#2A4F8C"
+                android:paddingVertical="15dp"
+                android:text="@string/btnCorrectTerm"
+                android:textSize="25sp" />
 
         </TableRow>
 
@@ -63,13 +58,41 @@
                 android:id="@+id/btnWrongTerm1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/btnWrongTerm1" />
+                android:layout_weight="1"
+                android:backgroundTint="#2A4F8C"
+                android:paddingVertical="15dp"
+                android:text="@string/btnWrongTerm1"
+                android:textSize="25sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnWrongTerm2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#2A4F8C"
+                android:paddingVertical="15dp"
+                android:text="@string/btnWrongTerm2"
+                android:textSize="25sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/btnWrongTerm3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btnWrongTerm3" />
+                android:layout_weight="1"
+                android:backgroundTint="#2A4F8C"
+                android:paddingVertical="15dp"
+                android:text="@string/btnWrongTerm3"
+                android:textSize="25sp" />
         </TableRow>
 
         <TableRow
@@ -80,7 +103,11 @@
                 android:id="@+id/btnNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/btnNext" />
+                android:layout_weight="1"
+                android:backgroundTint="#D1064B"
+                android:paddingVertical="15dp"
+                android:text="@string/btnNext"
+                android:textSize="25sp" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
