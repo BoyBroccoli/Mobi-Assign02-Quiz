@@ -27,9 +27,7 @@ public class Activity2 extends AppCompatActivity {
     ArrayList<String> termList = new ArrayList<String>();
     HashMap<String,String> map = new HashMap<String,String>();// create map
     ArrayList<String> btnAnswerChoices = new ArrayList<>(NUM_OF_CHOICES);
-
-    Button[] btnArray = {term1Btn, term2Btn, term3Btn, term4Btn};
-
+    Button[] btnObjects = {term1Btn, term2Btn, term3Btn, term4Btn};
 
 
 
@@ -38,6 +36,8 @@ public class Activity2 extends AppCompatActivity {
     int questionIndex = 0; // to index through deffList
 
     int answersCorrect = 0; // to hold the num of correct answers
+
+    public boolean buttonsEnabled = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,27 +67,56 @@ public class Activity2 extends AppCompatActivity {
             switch(v.getId()){
                 case R.id.btnTerm1:
                     // do something
-                    checkBtnAnswer(term1Btn);
+                    if(buttonsEnabled){
+                        checkBtnAnswer(term1Btn);
+                        //disableButtons();
+                        //term1Btn.setEnabled(false);
+                        term2Btn.setEnabled(false);
+                        term3Btn.setEnabled(false);
+                        term4Btn.setEnabled(false);
+                    }
                     break;
                 case R.id.btnTerm2:
                     //do something
-                    checkBtnAnswer(term2Btn);
+                    if(buttonsEnabled){
+                        checkBtnAnswer(term2Btn);
+                        //disableButtons();
+                        term1Btn.setEnabled(false);
+                        //term2Btn.setEnabled(false);
+                        term3Btn.setEnabled(false);
+                        term4Btn.setEnabled(false);
+                    }
 
                     break;
                 case R.id.btnTerm3:
                     // do something
-                    checkBtnAnswer(term3Btn);
+                    if(buttonsEnabled){
+                        checkBtnAnswer(term3Btn);
+                        //disableButtons();
+                        term1Btn.setEnabled(false);
+                        term2Btn.setEnabled(false);
+                        //term3Btn.setEnabled(false);
+                        term4Btn.setEnabled(false);
+                    }
 
                     break;
                 case R.id.btnTerm4:
                     // do something
-                    checkBtnAnswer(term4Btn);
+                    if(buttonsEnabled){
+                        checkBtnAnswer(term4Btn);
+                        //disableButtons();
+                        term1Btn.setEnabled(false);
+                        term2Btn.setEnabled(false);
+                        term3Btn.setEnabled(false);
+                        //term4Btn.setEnabled(false);
+                    }
 
                     break;
                 case R.id.btnNext:
                     // do something
                     newDeffAndNewTerm();
                     System.out.println(answersCorrect);
+                    enableButtons();
                 default:
                     //do something
                     break;
@@ -130,25 +159,23 @@ public class Activity2 extends AppCompatActivity {
 
         createBtnChoices();
 
-        // setting text for buttons
-//        for(int i = 0; i < btnArray.length; i++){
-//            btnArray[i].setText("Hello World");
-////            System.out.println(btnAnswerChoices.get(i));
+        // changed the above code into a method.
+        setBtnText();
+
+
+        // Keeps saying is NULL and Crashes
+//        for(int i=0; i < btnArray.length; i++){
+//            btnArray[i].setText(btnAnswerChoices.get(i));
 //        }
 
-        // had for loop to add to text, but kept saying btn was NULL
-//        term1Btn.setText(btnAnswerChoices.get(0));
-//        term2Btn.setText(btnAnswerChoices.get(1));
-//        term3Btn.setText(btnAnswerChoices.get(2));
-//        term4Btn.setText(btnAnswerChoices.get(3));
-
-        // Keeps saying is NULL
-        for(int i=0; i < NUM_OF_CHOICES; i++){
-            btnArray[i].setText(btnAnswerChoices.get(i));
-        }
-
-
         questionIndex++;
+    }
+
+    public void setBtnText(){
+        term1Btn.setText(btnAnswerChoices.get(0));
+        term2Btn.setText(btnAnswerChoices.get(1));
+        term3Btn.setText(btnAnswerChoices.get(2));
+        term4Btn.setText(btnAnswerChoices.get(3));
     }
 
 
@@ -188,17 +215,41 @@ public class Activity2 extends AppCompatActivity {
         // populating btnAnswerChoices with random options
         for(int i = 0; i<(NUM_OF_CHOICES -1); i++){
 
+            // set a new index value
             while(btnAnswerChoices.contains(termList.get(randoIndex))){
                 randoIndex = rand.nextInt(termList.size());
             }
             btnAnswerChoices.add(termList.get(randoIndex));
 
-            // System.out.println(btnAnswerChoices);
         }
 
         // now shuffling the order
         Collections.shuffle(btnAnswerChoices);
 
+    }
+
+
+    // disables buttons once a button is clicked.
+    public void disableButtons(Button btn){
+        buttonsEnabled = false;
+        for(Button btnChoice: btnObjects){
+            if(!btnChoice.equals(btn)){
+                btnChoice.setEnabled(false);
+            }
+        }
+//        term1Btn.setEnabled(false);
+//        term2Btn.setEnabled(false);
+//        term3Btn.setEnabled(false);
+//        term4Btn.setEnabled(false);
+    }
+
+    // enables all the buttons after nxtbtn is clicked.
+    public void enableButtons(){
+        buttonsEnabled = true;
+        term1Btn.setEnabled(true);
+        term2Btn.setEnabled(true);
+        term3Btn.setEnabled(true);
+        term4Btn.setEnabled(true);
     }
 
     // Sets up the java and xml for Buttons and Views
