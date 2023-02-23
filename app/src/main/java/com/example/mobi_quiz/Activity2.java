@@ -137,10 +137,15 @@ public class Activity2 extends AppCompatActivity {
 //        }
 
         // had for loop to add to text, but kept saying btn was NULL
-        term1Btn.setText(btnAnswerChoices.get(0));
-        term2Btn.setText(btnAnswerChoices.get(1));
-        term3Btn.setText(btnAnswerChoices.get(2));
-        term4Btn.setText(btnAnswerChoices.get(3));
+//        term1Btn.setText(btnAnswerChoices.get(0));
+//        term2Btn.setText(btnAnswerChoices.get(1));
+//        term3Btn.setText(btnAnswerChoices.get(2));
+//        term4Btn.setText(btnAnswerChoices.get(3));
+
+        // Keeps saying is NULL
+        for(int i=0; i < NUM_OF_CHOICES; i++){
+            btnArray[i].setText(btnAnswerChoices.get(i));
+        }
 
 
         questionIndex++;
