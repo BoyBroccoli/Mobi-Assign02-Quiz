@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             // putting file into stream
-            InputStream is = getResources().openRawResource(R.raw.delimiters);
+            InputStream is = getResources().openRawResource(R.raw.spellsquiz);
 
             // putting the stream into a buffer
             br = new BufferedReader(new InputStreamReader(is));
@@ -117,24 +117,21 @@ public class MainActivity extends AppCompatActivity {
                 // Splitting the String
 
                     String[] separated = str.split("\\$\\$"); // will contain d1
-                    String first = separated[0];
+                    String first = separated[0]; // contain term
                     //System.out.println(first);
 
-                    String second = separated[1]; // will contain t1
+                    String second = separated[1]; // will contain definition
                     //System.out.println(second);
 
-                    // adding Tokens to Array Lists
-                    deffList.add(first);
-                    termList.add(second);
+                    // populating Array Lists with Tokens
+                    termList.add(first);
+                    deffList.add(second);
+
             }
 
             is.close(); // closing stream
             br.close(); // closing buffer
             System.out.println("File in RAW is Closed");
-
-
-
-
 
         }catch (IOException e){
             // catch specificly first

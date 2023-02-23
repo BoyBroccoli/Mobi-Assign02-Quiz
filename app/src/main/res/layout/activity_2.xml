@@ -22,15 +22,15 @@
             <TextView
                 android:id="@+id/currentQTxtView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="350dp"
                 android:layout_column="0"
                 android:layout_span="1"
                 android:layout_weight="3"
+                android:includeFontPadding="true"
                 android:paddingVertical="100dp"
-                android:paddingBottom="100dp"
                 android:text="@string/currentQTxtView"
                 android:textAlignment="center"
-                android:textSize="45sp" />
+                android:textSize="30sp" />
 
         </TableRow>
 
@@ -39,13 +39,13 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnCorrectTerm"
+                android:id="@+id/btnTerm1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
-                android:text="@string/btnCorrectTerm"
+                android:text="@string/btnTerm1"
                 android:textSize="25sp" />
 
         </TableRow>
@@ -55,13 +55,13 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnWrongTerm1"
+                android:id="@+id/btnTerm2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
-                android:text="@string/btnWrongTerm1"
+                android:text="@string/btnTerm2"
                 android:textSize="25sp" />
         </TableRow>
 
@@ -70,13 +70,13 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnWrongTerm2"
+                android:id="@+id/btnTerm3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
-                android:text="@string/btnWrongTerm2"
+                android:text="@string/btnTerm3"
                 android:textSize="25sp" />
         </TableRow>
 
@@ -85,13 +85,13 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btnWrongTerm3"
+                android:id="@+id/btnTerm4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
-                android:text="@string/btnWrongTerm3"
+                android:text="@string/btnTerm4"
                 android:textSize="25sp" />
         </TableRow>
 
