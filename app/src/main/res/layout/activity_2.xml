@@ -46,7 +46,8 @@
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
                 android:text="@string/btnTerm1"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                app:cornerRadius="40dp" />
 
         </TableRow>
 
@@ -62,7 +63,8 @@
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
                 android:text="@string/btnTerm2"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                app:cornerRadius="40dp" />
         </TableRow>
 
         <TableRow
@@ -77,7 +79,8 @@
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
                 android:text="@string/btnTerm3"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                app:cornerRadius="40dp" />
         </TableRow>
 
         <TableRow
@@ -92,7 +95,8 @@
                 android:backgroundTint="#2A4F8C"
                 android:paddingVertical="15dp"
                 android:text="@string/btnTerm4"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                app:cornerRadius="40dp" />
         </TableRow>
 
         <TableRow
@@ -107,7 +111,8 @@
                 android:backgroundTint="#D1064B"
                 android:paddingVertical="15dp"
                 android:text="@string/btnNext"
-                android:textSize="25sp" />
+                android:textSize="25sp"
+                app:cornerRadius="40dp" />
         </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,6 +16,8 @@ import java.util.Random;
 
 public class Activity2 extends AppCompatActivity {
     final int NUM_OF_CHOICES = 4; // for button choices
+
+    final int COUNT_TO_END_QUIZ = 10;
 
     private TextView quizQuestion;
 
@@ -30,12 +33,13 @@ public class Activity2 extends AppCompatActivity {
     Button[] btnObjects = {term1Btn, term2Btn, term3Btn, term4Btn};
 
 
-
     String currentQ; // to hold current question
 
     int questionIndex = 0; // to index through deffList
 
     int answersCorrect = 0; // to hold the num of correct answers
+
+    int counter =0;
 
     public boolean buttonsEnabled = true;
 
@@ -66,57 +70,41 @@ public class Activity2 extends AppCompatActivity {
 
             switch(v.getId()){
                 case R.id.btnTerm1:
-                    // do something
                     if(buttonsEnabled){
                         checkBtnAnswer(term1Btn);
-                        //disableButtons();
-                        //term1Btn.setEnabled(false);
                         term2Btn.setEnabled(false);
                         term3Btn.setEnabled(false);
                         term4Btn.setEnabled(false);
                     }
                     break;
                 case R.id.btnTerm2:
-                    //do something
                     if(buttonsEnabled){
                         checkBtnAnswer(term2Btn);
-                        //disableButtons();
                         term1Btn.setEnabled(false);
-                        //term2Btn.setEnabled(false);
                         term3Btn.setEnabled(false);
                         term4Btn.setEnabled(false);
                     }
-
                     break;
                 case R.id.btnTerm3:
-                    // do something
                     if(buttonsEnabled){
                         checkBtnAnswer(term3Btn);
-                        //disableButtons();
                         term1Btn.setEnabled(false);
                         term2Btn.setEnabled(false);
-                        //term3Btn.setEnabled(false);
                         term4Btn.setEnabled(false);
                     }
-
                     break;
                 case R.id.btnTerm4:
-                    // do something
                     if(buttonsEnabled){
                         checkBtnAnswer(term4Btn);
-                        //disableButtons();
                         term1Btn.setEnabled(false);
                         term2Btn.setEnabled(false);
                         term3Btn.setEnabled(false);
-                        //term4Btn.setEnabled(false);
                     }
-
                     break;
                 case R.id.btnNext:
-                    // do something
-                    newDeffAndNewTerm();
-                    System.out.println(answersCorrect);
-                    enableButtons();
+                    rmvAnsQuestion(); // burns from deff list
+                    newDeffAndNewTerm(); // displays new text to buttons and txtview
+                    enableButtons(); // reenables buttons.
                 default:
                     //do something
                     break;
@@ -152,25 +140,24 @@ public class Activity2 extends AppCompatActivity {
 
     // Displays a new Deff into the txtView, populates buttons with 4 new choices.
     public void newDeffAndNewTerm(){
-        currentQ = deffList.get(questionIndex);
+        if(deffList.size()>0){
+            currentQ = deffList.get(questionIndex);
 
-        // Setting view to current question
-        quizQuestion.setText(getCurrentDeff());
+            // Setting view to current question
+            quizQuestion.setText(getCurrentDeff());
 
-        createBtnChoices();
+            createBtnChoices();
 
-        // changed the above code into a method.
-        setBtnText();
-
-
-        // Keeps saying is NULL and Crashes
-//        for(int i=0; i < btnArray.length; i++){
-//            btnArray[i].setText(btnAnswerChoices.get(i));
-//        }
-
-        questionIndex++;
+            // changed the above code into a method.
+            setBtnText();
+        } else {
+            endQuiz();
+        }
     }
 
+
+
+    // Sets the txt to the buttons
     public void setBtnText(){
         term1Btn.setText(btnAnswerChoices.get(0));
         term2Btn.setText(btnAnswerChoices.get(1));
@@ -187,7 +174,7 @@ public class Activity2 extends AppCompatActivity {
 
     // Remove the already shown Deff from the arrayList
     public void rmvAnsQuestion(){
-
+        deffList.remove(questionIndex);
     }
 
     // Gets the correct term based off current deff
@@ -230,17 +217,14 @@ public class Activity2 extends AppCompatActivity {
 
 
     // disables buttons once a button is clicked.
-    public void disableButtons(Button btn){
+    public void disableButtons(){
         buttonsEnabled = false;
-        for(Button btnChoice: btnObjects){
-            if(!btnChoice.equals(btn)){
-                btnChoice.setEnabled(false);
-            }
-        }
-//        term1Btn.setEnabled(false);
-//        term2Btn.setEnabled(false);
-//        term3Btn.setEnabled(false);
-//        term4Btn.setEnabled(false);
+
+        term1Btn.setEnabled(false);
+        term2Btn.setEnabled(false);
+        term3Btn.setEnabled(false);
+        term4Btn.setEnabled(false);
+        nextBtn.setEnabled(false);
     }
 
     // enables all the buttons after nxtbtn is clicked.
@@ -274,4 +258,20 @@ public class Activity2 extends AppCompatActivity {
         nextBtn = findViewById(R.id.btnNext);
         nextBtn.setOnClickListener(termsClickListener);
     }
+
+    public void endQuiz(){
+        String finalScoreMessage = "Your final scor is: " + answersCorrect + " out of 10!";
+        disableButtons();
+        Toast.makeText(this, finalScoreMessage, Toast.LENGTH_LONG).show();
+
+        // NEXT go back to main intent
+        goBackToMainIntentProcess();
+    }
+
+    public void goBackToMainIntentProcess(){
+
+        Intent i = new Intent(Activity2.this, MainActivity.class);
+        startActivity(i);
+    }
+
 }
