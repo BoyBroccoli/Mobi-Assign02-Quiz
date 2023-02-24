@@ -76,10 +76,11 @@
             <Button
                 android:id="@+id/btnQFile1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_column="2"
                 android:layout_span="1"
                 android:backgroundTint="#2A4F8C"
+                android:elegantTextHeight="false"
                 android:text="@string/btnQFile1" />
         </TableRow>
 

@@ -10,7 +10,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#BC81E4C8"
+        android:background="#6092E3"
         android:shrinkColumns="1,2,3"
         android:stretchColumns="1,2,3"
         app:layout_constraintStart_toStartOf="parent">
@@ -30,6 +30,7 @@
                 android:paddingVertical="100dp"
                 android:text="@string/currentQTxtView"
                 android:textAlignment="center"
+                android:textColor="#FAFAFA"
                 android:textSize="30sp" />
 
         </TableRow>
@@ -105,14 +106,15 @@
 
             <Button
                 android:id="@+id/btnNext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#D1064B"
                 android:paddingVertical="15dp"
                 android:text="@string/btnNext"
                 android:textSize="25sp"
-                app:cornerRadius="40dp" />
+                app:cornerRadius="45dp" />
         </TableRow>
     </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

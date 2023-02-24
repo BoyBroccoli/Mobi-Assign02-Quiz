@@ -3,6 +3,7 @@ package com.example.mobi_quiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -63,6 +64,7 @@ public class Activity2 extends AppCompatActivity {
 
     }
 
+
     // On Click Listener for term btns
     public View.OnClickListener termsClickListener = new View.OnClickListener() {
         @Override
@@ -72,41 +74,40 @@ public class Activity2 extends AppCompatActivity {
                 case R.id.btnTerm1:
                     if(buttonsEnabled){
                         checkBtnAnswer(term1Btn);
-                        term2Btn.setEnabled(false);
-                        term3Btn.setEnabled(false);
-                        term4Btn.setEnabled(false);
+                        changeButtonColor(term1Btn);
+                        disableButtons();
                     }
                     break;
                 case R.id.btnTerm2:
                     if(buttonsEnabled){
                         checkBtnAnswer(term2Btn);
-                        term1Btn.setEnabled(false);
-                        term3Btn.setEnabled(false);
-                        term4Btn.setEnabled(false);
+                        changeButtonColor(term2Btn);
+                        disableButtons();
+
                     }
                     break;
                 case R.id.btnTerm3:
                     if(buttonsEnabled){
                         checkBtnAnswer(term3Btn);
-                        term1Btn.setEnabled(false);
-                        term2Btn.setEnabled(false);
-                        term4Btn.setEnabled(false);
+                        changeButtonColor(term3Btn);
+                        disableButtons();
+
                     }
                     break;
                 case R.id.btnTerm4:
                     if(buttonsEnabled){
                         checkBtnAnswer(term4Btn);
-                        term1Btn.setEnabled(false);
-                        term2Btn.setEnabled(false);
-                        term3Btn.setEnabled(false);
+                        changeButtonColor(term4Btn);
+                        disableButtons();
+
                     }
                     break;
                 case R.id.btnNext:
                     rmvAnsQuestion(); // burns from deff list
                     newDeffAndNewTerm(); // displays new text to buttons and txtview
                     enableButtons(); // reenables buttons.
+                    resetButtonColors();
                 default:
-                    //do something
                     break;
             }
         }
@@ -224,9 +225,29 @@ public class Activity2 extends AppCompatActivity {
         term2Btn.setEnabled(false);
         term3Btn.setEnabled(false);
         term4Btn.setEnabled(false);
+    }
+
+    public void disableAllButtons(){
+        buttonsEnabled = false;
+
+        term1Btn.setEnabled(false);
+        term2Btn.setEnabled(false);
+        term3Btn.setEnabled(false);
+        term4Btn.setEnabled(false);
         nextBtn.setEnabled(false);
     }
 
+    public void changeButtonColor(Button btn){
+        btn.setBackgroundColor(Color.parseColor("#DB93B0"));
+    }
+
+    public void resetButtonColors(){
+        term1Btn.setBackgroundColor(Color.parseColor("#2A4F8C"));
+        term2Btn.setBackgroundColor(Color.parseColor("#2A4F8C"));
+        term3Btn.setBackgroundColor(Color.parseColor("#2A4F8C"));
+        term4Btn.setBackgroundColor(Color.parseColor("#2A4F8C"));
+
+    }
     // enables all the buttons after nxtbtn is clicked.
     public void enableButtons(){
         buttonsEnabled = true;
@@ -260,18 +281,21 @@ public class Activity2 extends AppCompatActivity {
     }
 
     public void endQuiz(){
-        String finalScoreMessage = "Your final scor is: " + answersCorrect + " out of 10!";
-        disableButtons();
-        Toast.makeText(this, finalScoreMessage, Toast.LENGTH_LONG).show();
+        String finalScoreMessage = "Your final score is: " + answersCorrect + " out of 10!";
+        disableAllButtons();
 
         // NEXT go back to main intent
-        goBackToMainIntentProcess();
+        goToResultsIntent();
     }
 
-    public void goBackToMainIntentProcess(){
+    public void goToResultsIntent(){
+        Intent i = new Intent(Activity2.this, ResultsActivity.class);
+        i.putExtra("finalScore",answersCorrect);
 
-        Intent i = new Intent(Activity2.this, MainActivity.class);
         startActivity(i);
+
     }
+
+
 
 }

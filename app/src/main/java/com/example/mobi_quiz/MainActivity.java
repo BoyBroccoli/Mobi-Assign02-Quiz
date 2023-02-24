@@ -4,13 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.*;
+import android.util.Log;
 import android.widget.*;
 import android.view.*;
 import java.io.*; // File IO from java
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
+
 
 import android.os.Bundle;
 
@@ -27,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     private Button btnQFile1;
 
     private TextView qNameTxtView, qOptionTxtView;
+
+    // Log
+    private static final String TAG = "MainActivity";
+
 
     // booleans
     boolean btnClicked;
@@ -85,11 +88,10 @@ public class MainActivity extends AppCompatActivity {
         // TextViews
         // Quiz Name
         qNameTxtView = findViewById(R.id.qNameTxtView);
-        //qNameTxtView.setOnClickListener(btnClickListener);
 
         // Quiz Choice
         qOptionTxtView = findViewById(R.id.qOptionTxtView);
-        //qOptionTxtView.setOnClickListener(btnClickListener);
+
 
     }
 
@@ -109,19 +111,13 @@ public class MainActivity extends AppCompatActivity {
 
 
             while((str = br.readLine()) != null ){
-                // reading one row at a time into string delimieter
-                // Use parse here and split instead of sout
-                // put into deffList and tList,and then hash
-                //System.out.println(str);
 
                 // Splitting the String
 
                     String[] separated = str.split("\\$\\$"); // will contain d1
                     String first = separated[0]; // contain term
-                    //System.out.println(first);
 
                     String second = separated[1]; // will contain definition
-                    //System.out.println(second);
 
                     // populating Array Lists with Tokens
                     termList.add(first);
@@ -136,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         }catch (IOException e){
             // catch specificly first
             e.printStackTrace();
+            Log.e(TAG,"error IO Exception");
 
         } catch (Exception e){
             // catch genericCould have a routine that closes resource
